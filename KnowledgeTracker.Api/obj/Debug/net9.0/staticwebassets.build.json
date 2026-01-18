@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "LvgsesP1cX5zaJwnQdTN+A3xzhpEMbZCVBNoFkrqS6w=",
+  "Source": "KnowledgeTracker.Api",
+  "BasePath": "_content/KnowledgeTracker.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

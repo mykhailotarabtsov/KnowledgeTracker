@@ -1,0 +1,10 @@
+POST http://localhost:5031/api/projects
+Content-Type: application/json
+
+{
+  "name": "First Mongo Project",
+  "description": "Learning ASP.NET Core + MongoDB"
+}
+
+###
+GET http://localhost:5031/api/projects
