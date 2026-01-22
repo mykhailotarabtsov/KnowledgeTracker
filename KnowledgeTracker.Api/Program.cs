@@ -1,3 +1,4 @@
+using KnowledgeTracker.Api.Application.Projects;
 using KnowledgeTracker.Api.Infrastructure.Mongo;
 using KnowledgeTracker.Api.Infrastructure.Projects;
 using Microsoft.Extensions.Options;
@@ -18,6 +19,7 @@ builder.Services.AddSingleton<IMongoDatabase>(sp =>
 });
 
 builder.Services.AddScoped<ProjectRepository>();
+builder.Services.AddScoped<ProjectService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi

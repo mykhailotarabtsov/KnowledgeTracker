@@ -1,6 +1,5 @@
 using KnowledgeTracker.Api.Application.Projects;
 using KnowledgeTracker.Api.Domain.Projects;
-using KnowledgeTracker.Api.Infrastructure.Projects;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KnowledgeTracker.Api.Controllers
@@ -9,31 +8,56 @@ namespace KnowledgeTracker.Api.Controllers
     [Route("api/projects")]
     public class ProjectsController : ControllerBase
     {
-        private readonly ProjectRepository _repository;
+        private readonly ProjectService _service;
 
-        public ProjectsController(ProjectRepository repository)
+        public ProjectsController(ProjectService service)
         {
-            _repository = repository;
+            _service = service;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var projects = await _repository.GetAllAsync();
+            var projects = await _service.GetAllAsync();
             return Ok(projects);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(string id)
+        {
+            var project = await _service.GetByIdAsync(id);
+            if (project is null)
+                return NotFound();
+
+            return Ok(project);
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(CreateProjectRequest request)
         {
-            var project = new Project
-            {
-                Name = request.Name,
-                Description = request.Description
-            };
+            Project project = await _service.CreateAsync(request);
+            return CreatedAtAction(nameof(GetById), new { id = project.Id }, project);
+        }
 
-            await _repository.CreateAsync(project);
-            return CreatedAtAction(nameof(GetAll), new { id = project.Id }, project);
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(string id)
+        {
+            var deleted = await _service.DeleteAsync(id);
+            if (!deleted)
+                return NotFound();
+
+            return NoContent();
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(string id, UpdateProjectRequest request)
+        {
+            var result = await _service.UpdateAsync(id, request);
+            if (!result)
+            {
+                return NotFound();
+            }
+            return NoContent();
         }
     }
 }
