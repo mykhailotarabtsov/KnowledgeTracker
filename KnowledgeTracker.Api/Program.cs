@@ -1,10 +1,20 @@
 using KnowledgeTracker.Api.Application.Projects;
 using KnowledgeTracker.Api.Infrastructure.Mongo;
 using KnowledgeTracker.Api.Infrastructure.Projects;
+using KnowledgeTracker.Api.Middleware.Error;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddProblemDetails(configure =>
+{
+    configure.CustomizeProblemDetails = context =>
+    {
+        context.ProblemDetails.Extensions.TryAdd("requestId", context.HttpContext.TraceIdentifier);
+    };
+});
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 
 // DB
 builder.Services.Configure<MongoDbSettings>(
@@ -27,10 +37,13 @@ builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
+app.UseExceptionHandler();
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.UseDeveloperExceptionPage();
 }
 
 app.UseHttpsRedirection();
