@@ -3,7 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace KnowledgeTracker.Api.Domain.Common;
 
-public record class BaseEntity
+public class BaseEntity
 {
   [BsonId]
   [BsonRepresentation(BsonType.ObjectId)]

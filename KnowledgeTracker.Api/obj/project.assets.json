@@ -663,19 +663,19 @@
     ]
   },
   "packageFolders": {
-    "/home/tiwazvigil/.nuget/packages/": {}
+    "/Users/mykhailotarabtsov/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/tiwazvigil/Документи/development/dotnet-learing/KnowledgeTracker/KnowledgeTracker.Api/KnowledgeTracker.Api.csproj",
+      "projectUniqueName": "/Users/mykhailotarabtsov/dev-lessons/KnowledgeTracker/KnowledgeTracker.Api/KnowledgeTracker.Api.csproj",
       "projectName": "KnowledgeTracker.Api",
-      "projectPath": "/home/tiwazvigil/Документи/development/dotnet-learing/KnowledgeTracker/KnowledgeTracker.Api/KnowledgeTracker.Api.csproj",
-      "packagesPath": "/home/tiwazvigil/.nuget/packages/",
-      "outputPath": "/home/tiwazvigil/Документи/development/dotnet-learing/KnowledgeTracker/KnowledgeTracker.Api/obj/",
+      "projectPath": "/Users/mykhailotarabtsov/dev-lessons/KnowledgeTracker/KnowledgeTracker.Api/KnowledgeTracker.Api.csproj",
+      "packagesPath": "/Users/mykhailotarabtsov/.nuget/packages/",
+      "outputPath": "/Users/mykhailotarabtsov/dev-lessons/KnowledgeTracker/KnowledgeTracker.Api/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/tiwazvigil/.nuget/NuGet/NuGet.Config"
+        "/Users/mykhailotarabtsov/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -725,12 +725,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[9.0.11, 9.0.11]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -739,7 +733,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.112/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

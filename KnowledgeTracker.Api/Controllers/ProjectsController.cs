@@ -59,5 +59,38 @@ namespace KnowledgeTracker.Api.Controllers
             }
             return NoContent();
         }
+
+        [HttpPost("{projectId}/tasks")]
+        public async Task<IActionResult> AddTask(string projectId, CreateTaskRequest request)
+        {
+            var result = await _service.AddTaskAsync(projectId, request);
+            if (!result)
+            {
+                return NotFound();
+            }
+            return NoContent();
+        }
+
+        [HttpPut("{projectId}/tasks/{taskId}")]
+        public async Task<IActionResult> UpdateTask(string projectId, string taskId, UpdateTaskRequest request)
+        {
+            var result = await _service.UpdateTaskAsync(projectId, taskId, request);
+            if (!result)
+            {
+                return NotFound();
+            }
+            return NoContent();
+        }
+
+        [HttpDelete("{projectId}/tasks/{taskId}")]
+        public async Task<IActionResult> DeleteTask(string projectId, string taskId)
+        {
+            var result = await _service.DeleteTaskAsync(projectId, taskId);
+            if (!result)
+            {
+                return NotFound();
+            }
+            return NoContent();
+        }
     }
 }

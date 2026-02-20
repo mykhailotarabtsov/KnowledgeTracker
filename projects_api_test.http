@@ -13,7 +13,7 @@ GET http://localhost:5031/api/projects
 GET http://localhost:5031/api/projects/69726c13bb0fb6f852917f80
 
 ###
-DELETE http://localhost:5031/api/projects/69726c13bb0fb6f852917f80
+DELETE http://localhost:5031/api/projects/698b37d4c11477d955f14f03
 
 ###
 PUT http://localhost:5031/api/projects/697a5fd54f3fc12310bc896d
@@ -22,4 +22,13 @@ Content-Type: application/json
 {
   "name": "U",
   "description": "Updated description for ASP.NET Core + MongoDB project"
+}
+
+###
+POST http://localhost:5031/api/projects/698b38838f0745c6264aad88/tasks
+Content-Type: application/json 
+
+{
+  "title": "Task 1",
+  "description": "First task for the project"
 }

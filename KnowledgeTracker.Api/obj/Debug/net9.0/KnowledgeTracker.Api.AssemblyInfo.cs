@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KnowledgeTracker.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ca286ee60bc7963412eb6c2ada349e2e1dc17054")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+28647ddb3f2257e392cf3773010b91466308fc48")]
 [assembly: System.Reflection.AssemblyProductAttribute("KnowledgeTracker.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KnowledgeTracker.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

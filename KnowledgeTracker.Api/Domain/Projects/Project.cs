@@ -4,7 +4,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace KnowledgeTracker.Api.Domain.Projects;
 
-public record class Project : BaseEntity
+public class Project : BaseEntity
 {
 
   [BsonElement("name")]
@@ -18,4 +18,6 @@ public record class Project : BaseEntity
 
   [BsonElement("createdAt")]
   public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+  public List<TaskItem> Tasks { get; set; } = new();
 }

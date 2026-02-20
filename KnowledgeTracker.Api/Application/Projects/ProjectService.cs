@@ -52,4 +52,24 @@ public class ProjectService
   {
     return await _repository.DeleteAsync(id);
   }
+
+  public async Task<bool> AddTaskAsync(string projectId, CreateTaskRequest request)
+  {
+    var task = new TaskItem
+    {
+      Title = request.Title
+    };
+
+    return await _repository.AddTaskAsync(projectId, task);
+  }
+
+  public async Task<bool> UpdateTaskAsync(string projectId, string taskId, UpdateTaskRequest request)
+  {
+    return await _repository.UpdateTaskAsync(projectId, taskId, request);
+  }
+
+  public async Task<bool> DeleteTaskAsync(string projectId, string taskId)
+  {
+    return await _repository.DeleteTaskAsync(projectId, taskId);
+  }
 }
