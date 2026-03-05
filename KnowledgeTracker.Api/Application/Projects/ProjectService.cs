@@ -18,6 +18,31 @@ public class ProjectService
     return projects;
   }
 
+  public async Task<PaginatedProjectResponse> GetAllPaginatedAsync(int page, int pageSize)
+  {
+    int skip = (page - 1) * pageSize;
+
+    var allProjects = await _repository.GetAllAsync();
+    var paginated = allProjects
+        .Skip(skip)
+        .Take(pageSize)
+        .ToList();
+
+    return new PaginatedProjectResponse
+    {
+      Projects = paginated.Select(p => new ProjectDto
+      {
+        Name = p.Name,
+        Description = p.Description,
+        CreatedAt = p.CreatedAt,
+        Tasks = p.Tasks
+      }).ToList(),
+      TotalCount = allProjects.Count,
+      CurrentPage = page,
+      TotalPages = (int)Math.Ceiling(allProjects.Count / (double)pageSize)
+    };
+  }
+
   public async Task<Project?> GetByIdAsync(string id)
   {
     var project = await _repository.GetByIdAsync(id);

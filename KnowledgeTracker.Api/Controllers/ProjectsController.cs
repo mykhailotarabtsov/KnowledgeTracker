@@ -22,6 +22,13 @@ namespace KnowledgeTracker.Api.Controllers
             return Ok(projects);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetAllPaginated(int page = 1, int pageSize = 10)
+        {
+            var paginatedProjects = await _service.GetAllPaginatedAsync(page, pageSize);
+            return Ok(paginatedProjects);
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(string id)
         {
