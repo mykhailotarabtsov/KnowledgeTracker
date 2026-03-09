@@ -4,6 +4,7 @@ namespace KnowledgeTracker.Api.Application.Projects;
 
 public record class ProjectDto
 {
+  public required string Id { get; set; }
   public required string Name { get; set; }
 
   public string? Description { get; set; }

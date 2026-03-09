@@ -1,5 +1,6 @@
 using KnowledgeTracker.Api.Application.Projects;
 using KnowledgeTracker.Api.Domain.Projects;
+using KnowledgeTracker.Api.Mapping;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KnowledgeTracker.Api.Controllers
@@ -19,7 +20,7 @@ namespace KnowledgeTracker.Api.Controllers
         public async Task<IActionResult> GetAll()
         {
             var projects = await _service.GetAllAsync();
-            return Ok(projects);
+            return Ok(projects.Select(p => p.ToDto()));
         }
 
         [HttpGet]
@@ -36,14 +37,14 @@ namespace KnowledgeTracker.Api.Controllers
             if (project is null)
                 return NotFound();
 
-            return Ok(project);
+            return Ok(project.ToDto());
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(CreateProjectRequest request)
         {
             Project project = await _service.CreateAsync(request);
-            return CreatedAtAction(nameof(GetById), new { id = project.Id }, project);
+            return CreatedAtAction(nameof(GetById), new { id = project.Id }, project.ToDto());
         }
 
         [HttpDelete("{id}")]

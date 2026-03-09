@@ -1,5 +1,6 @@
 using KnowledgeTracker.Api.Domain.Projects;
 using KnowledgeTracker.Api.Infrastructure.Projects;
+using KnowledgeTracker.Api.Mapping;
 
 namespace KnowledgeTracker.Api.Application.Projects;
 
@@ -30,13 +31,7 @@ public class ProjectService
 
     return new PaginatedProjectResponse
     {
-      Projects = paginated.Select(p => new ProjectDto
-      {
-        Name = p.Name,
-        Description = p.Description,
-        CreatedAt = p.CreatedAt,
-        Tasks = p.Tasks
-      }).ToList(),
+      Projects = paginated.Select(p => p.ToDto()).ToList(),
       TotalCount = allProjects.Count,
       CurrentPage = page,
       TotalPages = (int)Math.Ceiling(allProjects.Count / (double)pageSize)

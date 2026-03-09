@@ -19,6 +19,7 @@
     <Folder Include="Infrastructure/" />
     <Folder Include="Infrastructure/Mongo/" />
     <Folder Include="Infrastructure/Projects/" />
+    <Folder Include="Mapping/" />
     <Folder Include="Models/" />
   </ItemGroup>
 
