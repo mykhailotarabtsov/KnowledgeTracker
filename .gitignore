@@ -1,0 +1,21 @@
+# Build output
+bin/
+obj/
+
+# User/IDE-specific files
+.vs/
+*.user
+*.suo
+
+# Optional: local editor settings
+.vscode/
+
+# Local secrets / machine-specific config
+.env
+.env.*
+appsettings.Local.json
+appsettings.*.local.json
+
+# Test / coverage output
+coverage/
+TestResults/

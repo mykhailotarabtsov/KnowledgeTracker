@@ -23,9 +23,10 @@ namespace KnowledgeTracker.Api.Controllers
             return Ok(projects.Select(p => p.ToDto()));
         }
 
-        [HttpGet]
+        [HttpGet("paginated")]
         public async Task<IActionResult> GetAllPaginated(int page = 1, int pageSize = 10)
         {
+            Console.WriteLine($"Getting paginated projects for page {page} and page size {pageSize}");
             var paginatedProjects = await _service.GetAllPaginatedAsync(page, pageSize);
             return Ok(paginatedProjects);
         }
