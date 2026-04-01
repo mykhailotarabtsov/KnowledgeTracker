@@ -13,28 +13,22 @@ public class ProjectService
     _repository = repository;
   }
 
-  public async Task<List<Project>> GetAllAsync()
+  public async Task<List<Project>> GetAllAsync(string name = "")
   {
-    var projects = await _repository.GetAllAsync();
+    var projects = await _repository.GetAllAsync(name);
     return projects;
   }
 
-  public async Task<PaginatedProjectResponse> GetAllPaginatedAsync(int page, int pageSize)
+  public async Task<PaginatedProjectResponse> GetAllPaginatedAsync(int page, int pageSize, string name = "")
   {
-    int skip = (page - 1) * pageSize;
-
-    var allProjects = await _repository.GetAllAsync();
-    var paginated = allProjects
-        .Skip(skip)
-        .Take(pageSize)
-        .ToList();
+    var (projects, totalCount) = await _repository.GetPaginatedAsync(page, pageSize, name);
 
     return new PaginatedProjectResponse
     {
-      Projects = paginated.Select(p => p.ToDto()).ToList(),
-      TotalCount = allProjects.Count,
+      Projects = projects.Select(p => p.ToDto()).ToList(),
+      TotalCount = totalCount,
       CurrentPage = page,
-      TotalPages = (int)Math.Ceiling(allProjects.Count / (double)pageSize)
+      TotalPages = (int)Math.Ceiling(totalCount / (double)pageSize)
     };
   }
 

@@ -17,17 +17,22 @@ namespace KnowledgeTracker.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll(string name = "")
         {
-            var projects = await _service.GetAllAsync();
+            var projects = await _service.GetAllAsync(name);
             return Ok(projects.Select(p => p.ToDto()));
         }
 
         [HttpGet("paginated")]
-        public async Task<IActionResult> GetAllPaginated(int page = 1, int pageSize = 10)
+        public async Task<IActionResult> GetAllPaginated(int page = 1, int pageSize = 10, string name = "")
         {
+            if (page < 1 || pageSize < 1)
+            {
+                return BadRequest("Page and pageSize must be greater than 0.");
+            }
+
             Console.WriteLine($"Getting paginated projects for page {page} and page size {pageSize}");
-            var paginatedProjects = await _service.GetAllPaginatedAsync(page, pageSize);
+            var paginatedProjects = await _service.GetAllPaginatedAsync(page, pageSize, name);
             return Ok(paginatedProjects);
         }
 

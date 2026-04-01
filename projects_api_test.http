@@ -10,7 +10,7 @@ Content-Type: application/json
 GET http://localhost:5031/api/projects
 
 ###
-GET http://localhost:5031/api/projects/paginated?page=1&pageSize=10
+GET http://localhost:5031/api/projects/paginated?page=1&pageSize=10&name=1
 
 ###
 GET http://localhost:5031/api/projects/69726c13bb0fb6f852917f80
